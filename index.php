@@ -1,16 +1,6 @@
 <?php
 require_once 'services/config.php';
 
-$buku = $conn->query("SELECT * FROM buku  ORDER BY id_buku");
-$anggota = $conn->query("SELECT * FROM anggota  ORDER BY id_anggota");
-$peminjaman = $conn->query("
-SELECT p.id_peminjaman, b.judul, a.nama, p.tanggal_pinjam, p.tanggal_kembali, p.status
-FROM peminjaman p
-JOIN buku b ON p.id_buku = b.id_buku
-JOIN anggota a ON p.id_anggota = a.id_anggota
-ORDER BY p.id_peminjaman
-");
-
 function e(string $s)
 {
     return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8');
